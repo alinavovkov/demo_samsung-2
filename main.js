@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             num: "5",
             textDescription: "“Because it's so nice-looking, it can live right in the kitchen. No more hauling a vacuum up and down the basement stairs on the daily”" + `<a href="./pages/readMore.html" class="content-description-read-more"> Read more…</a>`,
-            photo: "../images/image5.webp"
+            photo: "/images/image5.webp"
         }
     ];
 
