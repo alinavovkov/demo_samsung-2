@@ -1,0 +1,226 @@
+/* Font imports */
+@font-face {
+    font-family: 'samsungsharpsans-bold';
+    src: url('./fonts/samsungsharpsans-bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'samsungsharpsans-medium';
+    src: url('./fonts/samsungsharpsans-medium.otf') format('opentype');
+}
+
+/* Reset */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Layout */
+body {
+    background-image: url(../images/bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    border: 4px solid black;
+    background-color: white;
+    width: 1875px;
+    height: 1049px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    width: 90%;
+    height: 45px;
+    margin: 68px 0 0 71px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+}
+
+header img:first-child {
+    will-change: transform, opacity;
+    position: relative;
+    visibility: visible;
+    transform-origin: center center;
+}
+
+.bg-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+
+
+    img {
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+/* Content Layout */
+.main-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Content Area */
+
+/* .content {
+    width: 40%;
+    margin-left: 71px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 266px;
+} */
+
+.first-slide .content {
+    will-change: transform;
+    position: relative;
+    z-index: 2;
+}
+
+/* Text Styles */
+.content-main-txt {
+    font-family: 'samsungsharpsans-bold';
+    font-size: 50px;
+    line-height: 64px;
+    overflow: hidden;
+}
+
+.content-main-txt-logo {
+    height: 45px;
+}
+
+.text-line {
+    will-change: transform, opacity;
+    display: block;
+    position: relative;
+}
+
+.content-description {
+    font-family: 'samsungsharpsans-medium';
+    /* line-height: 45px; */
+    font-size: 27px;
+    /* margin-top: 107px; */
+    text-wrap: wrap;
+    /* position: relative; Ensures GSAP can move it */
+    /* top: 0; */
+}
+
+.content-description a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.content-description-read-more {
+    color: #808080;
+}
+
+/* Navigation */
+.content-nav-menu {
+    font-family: 'samsungsharpsans-medium';
+    font-size: 32px;
+    /* margin-top: 90px; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.content-nav-menu img {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.content-nav-menu img:hover {
+    opacity: 0.7;
+}
+
+/* Button */
+.content-shop-button {
+    border: 4px solid black;
+    border-radius: 58px;
+    width: 305px;
+    height: 117px;
+    font-family: 'Samsung Sharp Sans', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    text-transform: uppercase;
+    background-color: transparent;
+    /* margin-top: 46px; */
+    cursor: pointer;
+}
+
+.first-slide-btn {
+    /* margin-top: 380px; */
+}
+
+/* Slides */
+
+/* .first-slide {
+    width: 100%;
+    background-image: url(../images/image1.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.content-right {
+    width: 40%;
+    height: 100%;
+    /* background-image: url(../images/image5.webp); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    will-change: transform, width;
+}
+
+.second-slide
+{
+    width: 100%;
+    display: none;
+}
+
+.first-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 40%;
+    margin-left: 71px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 266px;
+    position: relative;
+    z-index: 2;
+    will-change: transform;
+}
