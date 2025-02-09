@@ -63,13 +63,15 @@ header img:first-child {
     display: flex;
     justify-content: flex-end;
     overflow: hidden;
+    object-fit: cover;
 
 
     img {
-        right: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        overflow: hidden;
+        will-change: transform, width;
     }
 }
 
@@ -88,16 +90,7 @@ header img:first-child {
 
 /* Content Area */
 
-/* .content {
-    width: 40%;
-    margin-left: 71px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 266px;
-} */
-
 .first-slide .content {
-    will-change: transform;
     position: relative;
     z-index: 2;
 }
@@ -108,6 +101,7 @@ header img:first-child {
     font-size: 50px;
     line-height: 64px;
     overflow: hidden;
+    height: 45%;
 }
 
 .content-main-txt-logo {
@@ -116,18 +110,14 @@ header img:first-child {
 
 .text-line {
     will-change: transform, opacity;
-    display: block;
     position: relative;
 }
 
 .content-description {
+    height: 20%;
     font-family: 'samsungsharpsans-medium';
-    /* line-height: 45px; */
     font-size: 27px;
-    /* margin-top: 107px; */
     text-wrap: wrap;
-    /* position: relative; Ensures GSAP can move it */
-    /* top: 0; */
 }
 
 .content-description a {
@@ -143,13 +133,17 @@ header img:first-child {
 .content-nav-menu {
     font-family: 'samsungsharpsans-medium';
     font-size: 32px;
-    /* margin-top: 90px; */
     display: flex;
     align-items: center;
-    gap: 20px;
+    overflow: hidden;
+}
+
+.content-nav-menu {
+    pointer-events: none;
 }
 
 .content-nav-menu img {
+    margin: 15px;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -169,27 +163,14 @@ header img:first-child {
     font-size: 40px;
     text-transform: uppercase;
     background-color: transparent;
-    /* margin-top: 46px; */
     cursor: pointer;
-}
-
-.first-slide-btn {
-    /* margin-top: 380px; */
 }
 
 /* Slides */
 
-/* .first-slide {
-    width: 100%;
-    background-image: url(../images/image1.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
 .content-right {
-    width: 40%;
+    width: 50%;
     height: 100%;
-    /* background-image: url(../images/image5.webp); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right center;
@@ -201,8 +182,7 @@ header img:first-child {
     will-change: transform, width;
 }
 
-.second-slide
-{
+.second-slide {
     width: 100%;
     display: none;
 }
@@ -219,8 +199,6 @@ header img:first-child {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding-top: 266px;
     position: relative;
     z-index: 2;
-    will-change: transform;
 }

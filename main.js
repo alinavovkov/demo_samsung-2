@@ -1,12 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const samsungLogo = document.querySelector('header img:first-child');
-    const mainText = document.querySelector('.content-main-txt');
-    const buttonShop = document.querySelector('.content-shop-button');
+document.addEventListener("DOMContentLoaded", () => {
+    const samsungLogo = document.querySelector("header img:first-child");
+    const mainText = document.querySelector(".content-main-txt");
+    const buttonShop = document.querySelector(".content-shop-button");
     const textContent = mainText.innerHTML;
-    const contentDescription = document.querySelector('.content-description');
-    const contentNavMenu = document.querySelector('.content-nav-menu');
-    const bgLayer = document.querySelector('.bg-layer-img');
-
+    const contentDescription = document.querySelector(".content-description");
+    const contentNavMenu = document.querySelector(".content-nav-menu");
+    const bgLayer = document.querySelector(".bg-layer-img");
     const slides = [
         {
             num: "1",
@@ -34,91 +33,161 @@ document.addEventListener('DOMContentLoaded', () => {
             photo: "https://alinavovkov.github.io/demo_samsung-2/images/image5.webp"
         }
     ];
-
-
     let currentSlide = 0;
-
     const leftArrow = document.querySelector(".content-nav-menu img:first-child");
     const rightArrow = document.querySelector(".content-nav-menu img:last-child");
     const slideNumSpan = document.querySelector(".content-nav-menu span:first-of-type");
-    const descriptionText = document.querySelector(".content-description"); 
-    const slideImage = document.querySelector(".content-right"); 
+    const descriptionText = document.querySelector(".content-description");
+    const slideImage = document.querySelector(".content-right");
+    let isAutoMode = true;
+    let slideInterval;
+    const slideDelay = 10000;
+
+    function changeSlide(next = true) {
+        if (next) {
+            currentSlide = (currentSlide + 1) % slides.length;
+        } else {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        }
+        animateSlideChange();
+    }
+
+    function startAutoSlide(){
+        if (isAutoMode) {
+            slideInterval = setInterval(() => changeSlide(true), slideDelay);
+        } else {
+            clearInterval(slideInterval);
+        }
+    }
+
+    // function toggleSlideMode() {
+    //     isAutoMode = !isAutoMode;
+    //     startAutoSlide();
+    // }
+
+    startAutoSlide();
 
     leftArrow.addEventListener("click", () => {
-        if (currentSlide > 0) {
-            currentSlide--;
-            animateSlideChange();
-        }
+        // if (currentSlide > 0) {
+        //     currentSlide--;
+        //     animateSlideChange();
+        // }
+        isAutoMode = false;
+        next = false;
+        clearInterval(slideInterval);
+        changeSlide(true);
     });
-    
+
     rightArrow.addEventListener("click", () => {
-        if (currentSlide < slides.length - 1) {
-            currentSlide++;
-            animateSlideChange();
-        }
+        // if (currentSlide < slides.length - 1) {
+        //     currentSlide++;
+        //     animateSlideChange();
+        // }
+        isAutoMode = false;
+        next = true;
+        clearInterval(slideInterval);
+        changeSlide(true);
     });
-    
+
     function animateSlideChange() {
-        gsap.to([slideNumSpan, descriptionText], {
-            opacity: 0,
-            y: -10,
-            duration: 0.2,
+        gsap.to([slideNumSpan], {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power1.out",
             onComplete: () => {
                 slideNumSpan.textContent = slides[currentSlide].num;
                 descriptionText.innerHTML = slides[currentSlide].textDescription;
-                slideImage.style.backgroundImage = `url(${slides[currentSlide].photo})`;
-               
-                if (currentSlide > 0) {
-                    gsap.to(bgLayer, { opacity: 0, duration: 0.3, onComplete: () => bgLayer.style.display = "none" });
-                }
-
-                gsap.fromTo([slideNumSpan, descriptionText, slideImage], 
-                    { y: 10, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 0.2 }
-                );
             }
-        })
+        });
+        gsap.fromTo([descriptionText],
+            {
+                x: "10%",
+                y: "",
+                opacity: 0
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power1.in"
+            }
+        );
+
+        const newImage = document.createElement("div");
+        newImage.classList.add("slide-image");
+        newImage.style.backgroundImage = `url(${slides[currentSlide].photo})`;
+        newImage.style.backgroundSize = "cover";
+        newImage.style.backgroundPosition = "right center";
+        newImage.style.position = "absolute";
+        newImage.style.top = "0";
+        newImage.style.left = "0";
+        newImage.style.width = "100%";
+        newImage.style.height = "100%";
+        newImage.style.opacity = "0"; 
+        newImage.style.filter = "blur(15px)";
+        slideImage.appendChild(newImage);
+
+        gsap.to(newImage, {
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 0.6,
+            ease: "power2.out",
+            onComplete: () => {
+                slideImage.style.backgroundImage = `url(${slides[currentSlide].photo})`;
+                slideImage.removeChild(newImage);
+            }
+        });
+
+        if (currentSlide > 0) {
+            gsap.to(bgLayer, {
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => (bgLayer.style.display = "none")
+            });
+        } else {
+            bgLayer.style.display = "flex";
+            gsap.to(bgLayer, { opacity: 1, duration: 0.3 });
+        }
     }
-    
 
-    mainText.innerHTML = textContent.split('<br>').map(line =>
+    mainText.innerHTML = textContent.split("<br>").map(line =>
         `<div class="text-line">${line}</div>`
-    ).join('');
+    ).join("");
 
-    const textLines = document.querySelectorAll('.text-line');
+    const textLines = document.querySelectorAll(".text-line");
 
     gsap.set(samsungLogo, {
-        x: '-100%',
+        x: "-100%",
         y: 180,
         opacity: 0
     });
 
     gsap.set(buttonShop, {
-        x: '-100%',
+        x: "-100%",
         opacity: 0
     });
 
-
     gsap.set(textLines, {
-        x: '-100%',
-        y: '',
+        x: "-100%",
+        y: "110px",
         opacity: 0
     });
 
     gsap.set(bgLayer, {
-        width: "100%",
+        // width: "100%",
         x: "0%",
-
+        y: "0%",
     });
 
     gsap.set(contentDescription, {
         opacity: 0,
-        x: '0',
+        x: "0",
     });
 
     gsap.set(contentNavMenu, {
         opacity: 0,
-        x: '0',
+        x: "0",
+        pointerEvents: "none"
     });
 
     const masterTl = gsap.timeline({
@@ -146,15 +215,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }, "+=0.2")
 
         .to(bgLayer, {
-            width: "870px",
+            width: "50%",
+            x: "0%",
+            y: "0%",
             duration: 1.3,
+            // scale: 1.3,
+            // objectFit: "cover",
             ease: "power1.out",
         })
+      
+
+        .to(textLines, {
+            x: 0,
+            y: "250px",
+            duration: 1.3, // Match the duration of bgLayer to keep it synchronized
+            // ease: "power1.out"
+        }, "<")
+       
+        .to([contentNavMenu], {
+            pointerEvents: "auto",
+        })
+
         .to([contentDescription, contentNavMenu], {
             x: 0,
             opacity: 1,
-            duration: 1.2
+            duration: 1.2,
         })
 
+        .to(buttonShop, {
+            scale: 1.1,
+            duration: 0.8,
+            ease: "power1.inOut",
+            repeat: -1,
+            yoyo: true
+        })
 
 });
