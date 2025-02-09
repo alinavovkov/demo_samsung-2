@@ -11,22 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             num: "1",
             textDescription: "“The first time I used the Samsung Bespoke Jet™, I cried. I'm not being sensational; I really did. Of course, this vacuum worked great. But that's not all.”" + `<a href="./pages/readMore.html" class="content-description-read-more"> Read more…</a>`,
-            photo: "../images/image1.webp"
+            photo: "https://alinavovkov.github.io/demo_samsung-2/images/image1.webp"
         },
         {
             num: "2",
             textDescription: "“If you're an over-cleaner, like myself, you'll nerd out on all of the functions. If you avoid this chore at all costs, you'll appreciate how simple Samsung makes it.”" + `<a href="./pages/readMore.html" class="content-description-read-more"> Read more…</a>`,
-            photo: "../images/imageSlide2.webp"
+            photo: "https://alinavovkov.github.io/demo_samsung-2/images/imageSlide2.webp"
         },
         {
             num: "3",
             textDescription: "“Both the floor and pet hair attachments are cleverly designed to eliminate the dreaded hair wrap. (In other words, you'll never have to tackle hair tangles with a pair of scissors again.)”" + `<a href="./pages/readMore.html" class="content-description-read-more"> Read more…</a>`,
-            photo: "../images/image3.webp"
+            photo: "https://alinavovkov.github.io/demo_samsung-2/images/image3.webp"
         },
         {
             num: "4",
             textDescription: "“When I learned the Samsung Bespoke Vac cleaned itself with amazing technology, that's when I cried. No more scraping spider legs and hair out of the crevices with my hands. Its suction power is so strong, the canister is left perfectly clean after every use. It's like a vacuum for your vacuum.”" + `<a href="./pages/readMore.html" class="content-description-read-more"> Read more…</a>`,
-            photo: "../images/image4.webp"
+            photo: "https://alinavovkov.github.io/demo_samsung-2/images/image4.webp"
         },
         {
             num: "5",
