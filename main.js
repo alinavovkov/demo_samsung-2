@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startAutoSlide();
 
+    buttonShop.addEventListener("click", () => {
+        window.location.href = "pages/shopNow.html"
+    })
+
     leftArrow.addEventListener("click", () => {
         isAutoMode = false;
         next = false;
