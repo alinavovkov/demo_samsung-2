@@ -1,3 +1,5 @@
+# [DEMO LINK](https://alinavovkov.github.io/demo_samsung-2/)
+
 1. Implemented automatic launch of the carousel in the absence of user interaction (two modes - auto and manual).
 2. Switching between Frame 1 and Frame 2 done using animation.
 3. In the case of user interaction with the layout, the carousel should switch to manual control.
