@@ -60,18 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // function toggleSlideMode() {
-    //     isAutoMode = !isAutoMode;
-    //     startAutoSlide();
-    // }
-
     startAutoSlide();
 
     leftArrow.addEventListener("click", () => {
-        // if (currentSlide > 0) {
-        //     currentSlide--;
-        //     animateSlideChange();
-        // }
         isAutoMode = false;
         next = false;
         clearInterval(slideInterval);
@@ -79,10 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     rightArrow.addEventListener("click", () => {
-        // if (currentSlide < slides.length - 1) {
-        //     currentSlide++;
-        //     animateSlideChange();
-        // }
         isAutoMode = false;
         next = true;
         clearInterval(slideInterval);
@@ -174,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     gsap.set(bgLayer, {
-        // width: "100%",
         x: "0%",
         y: "0%",
     });
@@ -219,8 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
             x: "0%",
             y: "0%",
             duration: 1.3,
-            // scale: 1.3,
-            // objectFit: "cover",
             ease: "power1.out",
         })
       
@@ -228,8 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .to(textLines, {
             x: 0,
             y: "250px",
-            duration: 1.3, // Match the duration of bgLayer to keep it synchronized
-            // ease: "power1.out"
+            duration: 1.3, 
         }, "<")
        
         .to([contentNavMenu], {
