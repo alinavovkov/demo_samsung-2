@@ -43,14 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let slideInterval;
     const slideDelay = 10000;
 
-    function changeSlide(next = true) {
-        if (next) {
-            currentSlide = (currentSlide + 1) % slides.length;
-        } else {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        }
-        animateSlideChange();
-    }
 
     function startAutoSlide(){
         if (isAutoMode) {
@@ -70,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isAutoMode = false;
         next = false;
         clearInterval(slideInterval);
-        changeSlide(true);
+        changeSlide(false);
     });
 
     rightArrow.addEventListener("click", () => {
@@ -79,6 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(slideInterval);
         changeSlide(true);
     });
+
+    function changeSlide(next = true) {
+        if (next) {
+            currentSlide = (currentSlide + 1) % slides.length;
+        } else {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        }
+        animateSlideChange();
+    }
 
     function animateSlideChange() {
         gsap.to([slideNumSpan], {
